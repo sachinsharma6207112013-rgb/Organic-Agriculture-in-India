@@ -1,0 +1,186 @@
+:root {
+  --deep-green: #133a27; --mid-green: #2d6a4f; --light-green: #52b788;
+  --pale-green: #d8f3dc; --gold: #e9c46a; --off-white: #f4f7f6; 
+  --charcoal: #1a1a1a; --text-mid: #4a4a4a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--charcoal); overflow-x: hidden; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(19, 58, 39, 0.95); backdrop-filter: blur(10px); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 70px; border-bottom: 3px solid var(--light-green); }
+.nav-logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.4rem; font-weight: 700; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; transition: color 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+
+/* HERO WITH IMAGE */
+/* HERO WITH EXACT BACKGROUND FROM SCREENSHOT */
+.hero { 
+  min-height: 100vh; 
+  background-image: linear-gradient(to bottom, rgba(19, 58, 39, 0.6), rgba(10, 31, 20, 0.9)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1920&auto=format&fit=crop'); 
+  background-size: cover; 
+  background-position: center bottom; 
+  background-attachment: fixed;
+  display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 5%; 
+}
+.hero-content { max-width: 800px; color: white; }
+.hero-badge { display: inline-block; background: rgba(82,183,136,0.3); border: 1px solid var(--light-green); color: white; font-size: 0.8rem; font-weight: 700; padding: 0.5rem 1.5rem; border-radius: 50px; margin-bottom: 2rem; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; }
+.hero h1 span { color: var(--gold); }
+.hero-sub { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: #ddd; margin-bottom: 2rem; }
+.hero-desc { font-size: 1.1rem; line-height: 1.8; color: #eee; }
+
+section { padding: 100px 5%; }
+.section-label { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid-green); margin-bottom: 1rem; }
+.section-label::before { content: ''; display: block; width: 30px; height: 3px; background: var(--mid-green); }
+h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 900; color: var(--deep-green); line-height: 1.2; margin-bottom: 1.5rem; }
+.section-body { font-size: 1.1rem; color: var(--text-mid); max-width: 700px; margin-bottom: 3rem; line-height: 1.7; }
+
+/* CLICKABLE CARDS (Benefits, Graphs, Politics) */
+.clickable-card { cursor: pointer; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s; position: relative; background: white; border-radius: 16px; overflow: hidden; }
+.clickable-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); border: 2px solid var(--light-green); }
+.click-hint { font-size: 0.85rem; color: var(--light-green); font-weight: 800; margin-top: 1.5rem; text-align: right; text-transform: uppercase; }
+
+/* SECTIONS GRIDS */
+.benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.benefit-card { padding: 2.5rem; border-top: 5px solid var(--mid-green); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.ben-icon { font-size: 3rem; margin-bottom: 1rem; }
+.benefit-card h3 { color: var(--deep-green); margin-bottom: 1rem; font-size: 1.3rem; }
+.benefit-card p { color: var(--text-mid); line-height: 1.6; }
+
+.charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+.chart-container { padding: 2.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.chart-container h3 { text-align: center; margin-bottom: 1.5rem; color: var(--deep-green); font-family: 'Playfair Display', serif; }
+
+.politics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+.pol-card { border-left: 6px solid var(--deep-green); padding: 2.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.pol-card h3 { color: var(--deep-green); font-family: 'Playfair Display', serif; margin-bottom: 1rem; font-size: 1.5rem;}
+.pol-era { font-size: 0.85rem; color: var(--gold); font-weight: 800; margin-bottom: 1rem; display: block; text-transform: uppercase;}
+.pol-decision { padding: 1.5rem; border-radius: 8px; font-size: 1rem; background: var(--off-white); border: 1px solid #e0e0e0; line-height: 1.6; }
+
+/* VIDEOS SECTION */
+.videos-section { background: white; }
+.media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+.video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+/* UNIQUE CARDS SECTION (CREATOR & IDEA) */
+.contact-cards-section {background-image: linear-gradient(to bottom, rgba(19, 58, 39, 0.6), rgba(10, 31, 20, 0.9)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=1920&auto=format&fit=crop');}
+.cards-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem; max-width: 1200px; margin: 0 auto; }
+.unique-card { background: white; padding: 3rem; border-radius: 24px; box-shadow: 0 30px 60px rgba(0,0,0,0.3); position: relative; }
+.card-badge { position: absolute; top: -15px; left: 30px; background: var(--gold); color: var(--deep-green); font-weight: 800; padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.9rem; text-transform: uppercase; }
+.unique-card h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--deep-green); margin-bottom: 1.5rem; line-height: 1.2; }
+.unique-card h2 span { color: var(--mid-green); }
+
+/* Creator Card */
+.card-image { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem; }
+.creator-card p { color: var(--text-mid); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
+.tech-stack { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem;}
+.tech-tag { background: var(--pale-green); color: var(--deep-green); padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; }
+.a{ color: var(--deep-green); text-decoration: none; transition: color 0.3s; }
+.a:hover { color: var(--mid-green); }
+/* Idea Card */
+.how-to-use { background: var(--pale-green); color: var(--deep-green); padding: 1rem; border-radius: 8px; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem; border-left: 4px solid var(--mid-green); }
+.idea-form input, .idea-form textarea { width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; border: 2px solid #eee; border-radius: 12px; font-family: inherit; font-size: 1rem; transition: border-color 0.3s; background: #fafafa; }
+.idea-form input:focus, .idea-form textarea:focus { outline: none; border-color: var(--mid-green); background: white; }
+.idea-form textarea { resize: vertical; min-height: 150px; }
+
+/* Buttons */
+.btn-card { display: block; width: 100%; padding: 1.2rem; text-align: center; border-radius: 12px; font-weight: 800; font-size: 1.1rem; text-decoration: none; border: none; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
+.primary-btn { background: var(--deep-green); color: white; }
+.primary-btn:hover { background: #0c2619; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.secondary-btn { background: var(--gold); color: var(--deep-green); }
+.secondary-btn:hover { background: #dfb242; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(233,196,106,0.4); }
+.success-message { margin-top: 1.5rem; padding: 1.2rem; background: var(--pale-green); color: var(--deep-green); border-radius: 12px; font-weight: 700; text-align: center; border: 2px solid var(--light-green); }
+
+/* TRANSPARENT FOOTER */
+.transparent-footer { 
+  background: rgba(19, 58, 39, 0.85); 
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  padding: 3rem 5%; 
+  color: white; 
+  text-align: center; 
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.footer-content p { margin-bottom: 0.5rem; font-size: 1rem; font-weight: 500; letter-spacing: 0.05em; }
+
+/* SLIDE-IN DETAIL PANEL */
+.slide-panel { position: fixed; top: 0; right: -100%; width: 100vw; height: 100vh; background: white; z-index: 9999; transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1); overflow-y: auto; display: flex; flex-direction: column; }
+.slide-panel.active { right: 0; }
+.panel-header { background: var(--deep-green); color: white; padding: 1.5rem 5%; display: flex; align-items: center; gap: 2rem; position: sticky; top: 0; z-index: 10; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+.btn-back { background: transparent; color: var(--gold); border: 2px solid var(--gold); padding: 0.6rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 800; font-size: 1rem; transition: 0.3s; }
+.btn-back:hover { background: var(--gold); color: var(--deep-green); }
+.panel-content { padding: 4rem 15%; font-size: 1.15rem; line-height: 1.9; color: var(--text-mid); }
+.panel-content img { width: 100%; max-height: 450px; object-fit: cover; border-radius: 16px; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.panel-content h3 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--deep-green); margin-bottom: 1.5rem; line-height: 1.2; }
+.panel-content h4 { color: var(--mid-green); margin: 2.5rem 0 1rem; font-size: 1.5rem; font-weight: 800; }
+.panel-content ul { padding-left: 2rem; margin-bottom: 2rem; }
+.panel-content li { margin-bottom: 0.8rem; }
+.panel-content .highlight-box { background: var(--pale-green); padding: 2.5rem; border-radius: 16px; border-left: 8px solid var(--mid-green); margin: 3rem 0; font-weight: 700; color: var(--deep-green); font-size: 1.2rem; line-height: 1.6; }
+
+/* AI CHATBOT WIDGET */
+.chatbot-toggler { position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px; background: var(--gold); color: var(--deep-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 1000; transition: transform 0.3s; border: 3px solid white; }
+.chatbot-toggler:hover { transform: scale(1.1); }
+.chatbot-window { position: fixed; bottom: 110px; right: 30px; width: 360px; background: white; border-radius: 20px; box-shadow: 0 15px 45px rgba(0,0,0,0.2); z-index: 999; overflow: hidden; display: none; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+.chatbot-header { background: var(--deep-green); color: white; padding: 1.2rem 1.5rem; font-weight: 800; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
+.close-chat { cursor: pointer; font-size: 1.5rem; color: var(--gold); transition: 0.3s; }
+.close-chat:hover { color: white; }
+.chatbot-body { height: 380px; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; background: #f9f9f9; }
+.chat-msg { padding: 0.9rem 1.2rem; border-radius: 16px; font-size: 0.95rem; max-width: 85%; line-height: 1.5; font-weight: 500; }
+.chat-msg.bot { background: var(--pale-green); color: var(--deep-green); align-self: flex-start; border-bottom-left-radius: 0; border: 1px solid var(--light-green); }
+.chat-msg.user { background: var(--deep-green); color: white; align-self: flex-end; border-bottom-right-radius: 0; }
+.chatbot-input { display: flex; padding: 1rem; background: white; border-top: 1px solid #eee; }
+.chatbot-input input { flex: 1; border: 2px solid #ddd; padding: 0.9rem; border-radius: 12px; outline: none; transition: 0.3s; font-family: inherit; }
+.chatbot-input input:focus { border-color: var(--mid-green); }
+.chatbot-input button { background: var(--gold); color: var(--deep-green); font-weight: bold; border: none; padding: 0 1.2rem; margin-left: 0.5rem; border-radius: 12px; cursor: pointer; transition: 0.3s; }
+.chatbot-input button:hover { background: #dfb242; }
+
+@media (max-width: 900px) {
+  .cards-wrapper { grid-template-columns: 1fr; }
+  .panel-content { padding: 3rem 5%; }
+  .chatbot-window { width: 90%; right: 5%; bottom: 100px; }
+}
+
+
+
+
+
+
+
+/* --- PROFESSIONAL POLISH: SCROLLBAR & SELECTION --- */
+::-webkit-scrollbar { 
+  width: 10px; 
+}
+::-webkit-scrollbar-track { 
+  background: var(--off-white); 
+}
+::-webkit-scrollbar-thumb { 
+  background: var(--mid-green); 
+  border-radius: 10px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+  background: var(--deep-green); 
+}
+
+/* Changes the highlight color when a user selects text */
+::selection { 
+  background: var(--gold); 
+  color: var(--deep-green); 
+}
+
+
+
+
+/* --- ANIMATION CLASSES --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
