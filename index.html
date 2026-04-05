@@ -22,7 +22,10 @@
 
 <nav>
   <a href="#" class="nav-logo" style="text-decoration: none;">🌿 Organic India</a>
-  <ul class="nav-links">
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
     <li><a href="#benefits">Benefits</a></li>
     <li><a href="#stats-media">Data & Graphs</a></li>
     <li><a href="#videos">Documentaries</a></li>
@@ -37,6 +40,26 @@
     <h1>Organic Agriculture<br><span>in India</span></h1>
     <p class="hero-sub">Revolution or Unsustainable Concept?</p>
     <p class="hero-desc">India has the world's largest organic farming community. Dive deep into the data, history, and future of sustainable farming through our interactive, data-rich platform.</p>
+    <a href="#benefits" class="hero-cta">Explore the Research ↓</a>
+  </div>
+</section>
+
+<section class="stats-strip">
+  <div class="stat-item">
+    <span class="stat-number" data-target="4430000">0</span>
+    <span class="stat-label">Organic Farmers</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number" data-target="1300">0</span>
+    <span class="stat-label">Export Value ($M)</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number" data-target="30">0</span>
+    <span class="stat-label">States Participating</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number" data-target="2780000">0</span>
+    <span class="stat-label">Hectares Certified</span>
   </div>
 </section>
 
@@ -207,6 +230,8 @@
     <button onclick="processChat()">Send</button>
   </div>
 </div>
+
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
 
 <script src="script.js"></script>
 </body>

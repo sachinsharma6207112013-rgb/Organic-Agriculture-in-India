@@ -15,6 +15,13 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; transition: color 0.3s; }
 .nav-links a:hover { color: var(--gold); }
 
+/* HAMBURGER MENU */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; z-index: 101; }
+.hamburger span { display: block; width: 26px; height: 3px; background: white; margin: 5px 0; border-radius: 3px; transition: all 0.3s ease; }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
 /* HERO WITH IMAGE */
 /* HERO WITH EXACT BACKGROUND FROM SCREENSHOT */
 .hero { 
@@ -31,6 +38,28 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .hero h1 span { color: var(--gold); }
 .hero-sub { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: #ddd; margin-bottom: 2rem; }
 .hero-desc { font-size: 1.1rem; line-height: 1.8; color: #eee; }
+
+/* HERO CTA */
+.hero-cta { display: inline-block; margin-top: 2.5rem; padding: 1rem 2.5rem; background: var(--gold); color: var(--deep-green); font-weight: 800; font-size: 1.1rem; border-radius: 50px; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s, background 0.3s; }
+.hero-cta:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(233,196,106,0.4); background: #dfb242; }
+
+/* STATS STRIP */
+.stats-strip { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; padding: 3rem 5%; background: var(--deep-green); text-align: center; }
+.stat-item { min-width: 140px; }
+.stat-number { display: block; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--gold); }
+.stat-label { display: block; font-size: 0.85rem; font-weight: 600; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.3rem; }
+
+/* BACK TO TOP */
+.back-to-top { position: fixed; bottom: 30px; left: 30px; width: 50px; height: 50px; background: var(--deep-green); color: white; border: 2px solid var(--light-green); border-radius: 50%; font-size: 1.4rem; cursor: pointer; z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; display: flex; align-items: center; justify-content: center; }
+.back-to-top.visible { opacity: 1; pointer-events: auto; }
+.back-to-top:hover { transform: translateY(-3px); background: var(--mid-green); }
+
+/* CHATBOT TYPING */
+.typing-indicator { display: flex; gap: 4px; align-self: flex-start; padding: 0.9rem 1.2rem; }
+.typing-indicator span { width: 8px; height: 8px; background: var(--mid-green); border-radius: 50%; animation: bounce 1.4s infinite ease-in-out; }
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-8px); } }
 
 section { padding: 100px 5%; }
 .section-label { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--mid-green); margin-bottom: 1rem; }
@@ -139,9 +168,16 @@ h2.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem
 .chatbot-input button:hover { background: #dfb242; }
 
 @media (max-width: 900px) {
+  .hamburger { display: block; }
+  .nav-links { display: none; position: fixed; top: 70px; left: 0; right: 0; background: rgba(19, 58, 39, 0.98); flex-direction: column; align-items: center; padding: 2rem 0; gap: 1.5rem; border-bottom: 3px solid var(--light-green); }
+  .nav-links.active { display: flex; }
+  .nav-links a { font-size: 1.1rem; }
   .cards-wrapper { grid-template-columns: 1fr; }
   .panel-content { padding: 3rem 5%; }
   .chatbot-window { width: 90%; right: 5%; bottom: 100px; }
+  .stats-strip { gap: 1.5rem; padding: 2rem 5%; }
+  .stat-number { font-size: 1.8rem; }
+  .hero-cta { font-size: 1rem; padding: 0.9rem 2rem; }
 }
 
 
