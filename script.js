@@ -260,7 +260,15 @@ function processChat() {
     appendMessage(chatInput.value, 'user');
     chatInput.value = '';
 
+    // Show typing indicator
+    const typing = document.createElement('div');
+    typing.classList.add('typing-indicator');
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    chatBody.appendChild(typing);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
     setTimeout(() => {
+        typing.remove();
         // Fallback rejection for non-domain topics
         let reply = "I am an AI assistant dedicated strictly to this website's organic farming research and its creator. I cannot answer queries outside of these topics.";
 
@@ -290,7 +298,7 @@ function processChat() {
 document.addEventListener("DOMContentLoaded", function() {
     // Select all cards to animate
     const elementsToReveal = document.querySelectorAll('.benefit-card, .chart-container, .pol-card, .video-wrapper, .unique-card');
-    
+
     // Add the starting 'reveal' class
     elementsToReveal.forEach(el => el.classList.add('reveal'));
 
@@ -305,4 +313,81 @@ document.addEventListener("DOMContentLoaded", function() {
     }, { threshold: 0.15 });
 
     elementsToReveal.forEach(el => observer.observe(el));
+
+    // --- HAMBURGER MENU ---
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // --- BACK TO TOP BUTTON ---
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- ANIMATED STAT COUNTERS ---
+    const statNumbers = document.querySelectorAll('.stat-number');
+
+    function formatNumber(num) {
+        if (num >= 1000000) return (num / 1000000).toFixed(2) + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(0) >= 10 ? (num / 1000).toFixed(0) + 'K' : (num / 1000).toFixed(1) + 'K';
+        return num.toString();
+    }
+
+    function animateCounter(el) {
+        const target = parseInt(el.getAttribute('data-target'));
+        const duration = 2000;
+        const start = performance.now();
+
+        function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(eased * target);
+            el.textContent = formatNumber(current);
+            if (progress < 1) requestAnimationFrame(update);
+            else el.textContent = formatNumber(target);
+        }
+        requestAnimationFrame(update);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                statNumbers.forEach(el => animateCounter(el));
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const statsStrip = document.querySelector('.stats-strip');
+    if (statsStrip) statsObserver.observe(statsStrip);
+
+    // --- KEYBOARD SUPPORT ---
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (slidePanel.classList.contains('active')) closePanel();
+            if (chatWindow.style.display === 'flex') chatWindow.style.display = 'none';
+        }
+    });
 });
